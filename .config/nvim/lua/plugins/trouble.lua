@@ -7,7 +7,7 @@ return {
             })
 
             vim.keymap.set("n", "<leader>tt", function()
-                require("trouble").toggle()
+                require("trouble").toggle("workspace_diagnostics")
             end)
 
             vim.keymap.set("n", "]t", function()

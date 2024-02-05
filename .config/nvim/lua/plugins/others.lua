@@ -17,7 +17,7 @@ return{
     },
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
-    'tpope/vim-sleuth',
+    -- 'tpope/vim-sleuth',
 
     {
         'lukas-reineke/indent-blankline.nvim',
@@ -26,4 +26,15 @@ return{
     },
 
     { 'numToStr/Comment.nvim', opts = {} },
+
+    {
+        'nmac427/guess-indent.nvim',
+        config = function() require('guess-indent').setup {} end,
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+        }
+    }
 }

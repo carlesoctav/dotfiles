@@ -22,12 +22,14 @@ return {
                     before = { "#include <bits/stdc++.h>", "using namespace std;" },
                     after = "int main() {}",
                 },
+                ["python3"] = {
+                    before = "from typing import *"
+                },
                 ["java"] = {
                     before = "import java.util.*;",
                 },
                 ["golang"] = {
                     before = "package main",
-                    after = "func main()",
                 }
             }
         },
