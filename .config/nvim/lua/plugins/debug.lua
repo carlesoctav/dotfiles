@@ -30,7 +30,7 @@ return {
                     { 'P', function() return require('debugprint').debugprint({above = true}) end, { silent = true, desc = 'print above', expr = true } },
                     { 'o', function() return require('debugprint').debugprint({variable = true}) end, { silent = true, desc = 'print var below', expr = true } },
                     { 'O', function() return require('debugprint').debugprint({above = true, variable = true}) end, { silent = true, desc = 'print var above', expr = true} },
-                    { 'd', '<Cmd>DeleteDebugPrints<Cr>', { silent = true, desc = 'delete'} },
+                    { 'td', '<Cmd>DeleteDebugPrints<Cr>', { silent = true, desc = 'delete'} },
                     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
                 }
             })
