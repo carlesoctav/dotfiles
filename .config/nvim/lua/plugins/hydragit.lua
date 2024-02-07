@@ -63,6 +63,7 @@ return {
                     { '/', gitsigns.show, { exit = true, desc = 'show base file' } }, -- show the base of the file
                     { '<Enter>', '<Cmd>:Ge:<CR>', { exit = true, desc = 'Neogit' } },
                     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
+                    { '<Esc>', nil, { exit = true, nowait = true, desc = 'exit' } },
                 }
             })
         end

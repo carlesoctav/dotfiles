@@ -24,7 +24,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
         require('conform').format()
     end, { desc = 'Format current buffer with LSP' })
-    nmap('f', '<Cmd>Format<Cr>', 'format with conform')
+    nmap('<leader>f', '<Cmd>Format<Cr>', 'format with conform')
 end
 
 

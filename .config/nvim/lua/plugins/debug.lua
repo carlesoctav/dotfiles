@@ -32,6 +32,7 @@ return {
                     { 'O', function() return require('debugprint').debugprint({above = true, variable = true}) end, { silent = true, desc = 'print var above', expr = true} },
                     { 'td', '<Cmd>DeleteDebugPrints<Cr>', { silent = true, desc = 'delete'} },
                     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
+                    { '<Esc>', nil, { exit = true, nowait = true, desc = 'exit' } },
                 }
             })
         end
