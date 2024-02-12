@@ -15,12 +15,13 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 
-opt.autoindent = true
+-- opt.autoindent = true
 opt.smartindent = true
 
 opt.virtualedit = "block"
 opt.inccommand = "split"
 opt.ignorecase = true
+opt.smartcase = true
 
 opt.swapfile = false
 opt.backup = false
