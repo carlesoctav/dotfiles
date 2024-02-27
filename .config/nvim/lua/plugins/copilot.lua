@@ -5,27 +5,19 @@ return {
       require('ai-chat').setup {
         {
           mappings = {
-            focus_window = '<nop>',
+            focus_window = '<leader>tc',
 
             -- Sends the selected text to the chat, and starts insert mode
-            selected_to_chat = '<LEADER>tc',
+            selected_to_chat = '<leader>tc',
 
             run_macro = '<nop>',
 
             edit_macro = '<nop>',
 
             open_chat_in_current_buffer = '<leader>ta',
-
-
-            ---------------------
-            -- INSIDE THE CHAT --
-            ---------------------
-
-            -- Goes the next / previous message
             next_hunk = ']]',
             prev_hunk = '[[',
 
-            -- Cycles through the availables core instructions
             next_core = '}}',
             prev_core = '{{',
 

@@ -132,6 +132,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 bind -x '"\C-f":"tmux-sessionizer"'
 
 export MANPAGER="nvim +Man!"
+export ONNXRUNTIME_LIB_PATH=/usr/local/lib/libonnxruntime.so
 
 alias explain="gh copilot explain"
 alias suggest="gh copilot suggest"

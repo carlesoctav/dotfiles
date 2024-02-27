@@ -1,156 +1,93 @@
-local on_attach = function(_, bufnr)
-    local nmap = function(keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-    end
-
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-    nmap('gR', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-    nmap("gr", function() require("trouble").toggle("lsp_references") end)
-    nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
-        require('conform').format()
-    end, { desc = 'Format current buffer with LSP' })
-    nmap('<leader>f', '<Cmd>Format<Cr>', 'format with conform')
-end
-
-
-
-
 return {
-    {
-        "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true
-    },
-    {
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-            'rafamadriz/friendly-snippets',
-            'hrsh7th/cmp-nvim-lsp-signature-help',
-        },
-        config = function()
+	"neovim/nvim-lspconfig",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{ "j-hui/fidget.nvim", opts = {} },
+	},
+	config = function()
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+			callback = function(event)
+				local map = function(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+				end
 
-            local cmp = require 'cmp'
-            local luasnip = require 'luasnip'
-            require('neogen').setup({ snippet_engine = "luasnip" })
-            local neogen = require('neogen')
-            require('luasnip.loaders.from_vscode').lazy_load()
-            luasnip.config.setup {}
+				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("K", vim.lsp.buf.hover, "Hover Documentation")
+				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help )
+				map('<leader>f', require('conform').format, 'format with conform')
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client and client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+						buffer = event.buf,
+						callback = vim.lsp.buf.document_highlight,
+					})
 
-            vim.keymap.set('n', '<leader>ct', function()
-                neogen.generate()
-            end, {})
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+						buffer = event.buf,
+						callback = vim.lsp.buf.clear_references,
+					})
+				end
+			end,
+		})
 
-            cmp.setup {
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                completion = {
-                    completeopt = 'menu,menuone,noinsert',
-                },
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		local servers = {
+			clangd = {},
+			gopls = {},
+			pyright = {},
+			-- rust_analyzer = {},
+			lua_ls = {
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						workspace = {
+							checkThirdParty = false,
+							library = {
+								"${3rd}/luv/library",
+								unpack(vim.api.nvim_get_runtime_file("", true)),
+							},
+						},
+					},
+				},
+			},
+		}
+		require("mason").setup()
 
-                mapping = cmp.mapping.preset.insert {
-                    ['<C-Space>'] = cmp.mapping.complete {},
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                    ['<C-e>'] = cmp.mapping.close(),
-                    ['<Tab>'] = cmp.mapping.confirm{
-                        behavior = cmp.ConfirmBehavior.Replace,
-                        select = true,
-                    },
-                    ['<Tab>'] = cmp.mapping(function(fallback)
-                        if luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif neogen.jumpable() then
-                            neogen.jump_next()
-                        else
-                            fallback()
-                        end
-                    end, { 'i', 's' }),
+		local ensure_installed = vim.tbl_keys(servers or {})
+		vim.list_extend(ensure_installed, {
+			"stylua",
+			"black",
+		})
 
-                    ['<S-tab>'] = cmp.mapping(function(fallback)
-                        if luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        elseif neogen.jumpable(true) then
-                            neogen.jump_prev()
-                        else
-                            fallback()
-                        end
-                    end, { 'i', 's' })
-                },
-                sources = {
-                    -- { name = "copilot",  group_index = 2 },
-                    -- { name = 'nvim_lsp_signature_help' },
-                    { name = "nvim_lsp"},
-                    { name = "buffer"},
-                    { name = "path",
-                        option = {
-                            get_cwd = function() return vim.fn.getcwd() end
-                        }
-                    },
-                    { name = "luasnip"},
-                },
-            }
-        end
-    },
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            { 'williamboman/mason.nvim', config = true },
-            'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim',       opts = {} },
-            'folke/neodev.nvim',
-        },
-        config = function()
-            require('mason').setup()
-            require('mason-lspconfig').setup()
-            require('neodev').setup()
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-            local servers = {
-                gopls = {},
-                pyright = {},
-            }
-
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-            local mason_lspconfig = require 'mason-lspconfig'
-
-            mason_lspconfig.setup {
-                ensure_installed = vim.tbl_keys(servers),
-            }
-
-            mason_lspconfig.setup_handlers {
-                function(server_name)
-                    require('lspconfig')[server_name].setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes,
-                    }
-                end,
-            }
-        end
-    },
+		require("mason-lspconfig").setup({
+			handlers = {
+				function(server_name)
+					local server = servers[server_name] or {}
+					require("lspconfig")[server_name].setup({
+						cmd = server.cmd,
+						settings = server.settings,
+						filetypes = server.filetypes,
+						-- This handles overriding only values explicitly passed
+						-- by the server configuration above. Useful when disabling
+						-- certain features of an LSP (for example, turning off formatting for tsserver)
+						capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+					})
+				end,
+			},
+		})
+	end,
 }

@@ -1,11 +1,8 @@
 return {
     { "andrewferrier/debugprint.nvim",
-        -- Dependency only needed for NeoVim 0.8
         dependencies = {
             "nvim-treesitter/nvim-treesitter"
         },
-        -- Remove the following line to use development versions,
-        -- not just the formal releases
         version = "*",
         config = function()
             local opts = {
@@ -24,7 +21,7 @@ return {
                     end,
                 },
                 mode = {'n','x'},
-                body = '<leader>g?',
+                body = '<leader>d',
                 heads = {
                     { 'p', function() return require('debugprint').debugprint() end, { silent = true, desc = 'print below', expr = true} },
                     { 'P', function() return require('debugprint').debugprint({above = true}) end, { silent = true, desc = 'print above', expr = true } },

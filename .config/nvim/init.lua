@@ -22,3 +22,4 @@ require('lazy').setup({
 })
 
 require "remap"
+require "snip.go"
