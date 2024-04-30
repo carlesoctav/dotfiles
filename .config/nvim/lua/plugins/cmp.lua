@@ -55,10 +55,11 @@ return {
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'nvim_lsp_signature_help' },
           { name = 'path',
-            options = {
-              get_cwd = function() return vim.fn.getcwd() end
-            }
+            option = {
+              get_cwd = function() return vim.fn.getcwd() end,
+            },
           },
         },
       }

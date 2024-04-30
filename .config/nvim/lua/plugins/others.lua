@@ -4,6 +4,7 @@ return{
     { 'numToStr/Comment.nvim', opts = {} },
     'tpope/vim-sleuth',
     'Asheq/close-buffers.vim',
+    { 'nvim-tree/nvim-web-devicons' },
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
