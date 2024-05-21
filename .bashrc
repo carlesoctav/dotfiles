@@ -140,3 +140,5 @@ alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-win
 alias leet='nvim leetcode.nvim'
 
 . "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

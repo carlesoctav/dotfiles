@@ -1,6 +1,7 @@
 return{
 
     'Asheq/close-buffers.vim',
+    { 'LunarVim/bigfile.nvim'}, 
     { 'numToStr/Comment.nvim', opts = {} },
     'tpope/vim-sleuth',
     'Asheq/close-buffers.vim',
