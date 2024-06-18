@@ -14,15 +14,6 @@ return {
     },
 
     {
-        "rbong/vim-flog",
-        lazy = true,
-        cmd = { "Flog", "Flogsplit", "Floggit" },
-        dependencies = {
-            "tpope/vim-fugitive",
-        },
-    },
-
-    {
         "nvimtools/hydra.nvim",
         dependencies = {
 
@@ -84,7 +75,7 @@ return {
                     { 'b', gitsigns.blame_line, { desc = 'blame' } },
                     { 'B', function() gitsigns.blame_line{ full = true } end, { desc = 'blame show full' } },
                     { '/', gitsigns.show, { exit = true, desc = 'show base file' } }, -- show the base of the file
-                    { '<Enter>', '<Cmd>:Ge:<CR>', { exit = true, desc = 'Neogit' } },
+                    { '<Enter>', '<Cmd>:Neogit:<CR>', { exit = true, desc = 'Neogit' } },
                     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
                     { '<Esc>', nil, { exit = true, nowait = true, desc = 'exit' } },
                 }

@@ -1,9 +1,8 @@
 local opt = vim.opt
 
 -- leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- number and relative numeber
 opt.number = true
@@ -36,13 +35,11 @@ opt.swapfile = false
 opt.backup = false
 opt.undofile = true
 
-
 -- other
 opt.termguicolors = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.cursorline = true
 opt.showmode = false
-

@@ -1,6 +1,5 @@
 return{
 
-    'Asheq/close-buffers.vim',
     { 'LunarVim/bigfile.nvim'}, 
     { 'numToStr/Comment.nvim', opts = {} },
     'tpope/vim-sleuth',
@@ -22,5 +21,4 @@ return{
             require('mini.jump').setup()
         end,
     },
-
-}
+    { 'wakatime/vim-wakatime', lazy = false } }
