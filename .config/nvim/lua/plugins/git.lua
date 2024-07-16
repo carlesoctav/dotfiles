@@ -67,15 +67,8 @@ return {
                     { 'u', gitsigns.undo_stage_hunk, { desc = 'undo last stage' } },
                     { 'S', gitsigns.stage_buffer, { desc = 'stage buffer' } },
                     { 'p', gitsigns.preview_hunk, { desc = 'preview hunk' } },
-                    { 'td', gitsigns.toggle_deleted, { nowait = true, desc = 'toggle deleted' } },
-                    {'r', gitsigns.reset_hunk, {desc = 'reset hunk' }},
-                    {'R', gitsigns.reset_buffer, {desc = 'rest buffer'}},
-                    {'d', gitsigns.diffthis, {desc = 'diff against index'}},
-                    {'D', function() gitsigns.diffthis '~' end, {desc = 'diff against last commit'}},
                     { 'b', gitsigns.blame_line, { desc = 'blame' } },
                     { 'B', function() gitsigns.blame_line{ full = true } end, { desc = 'blame show full' } },
-                    { '/', gitsigns.show, { exit = true, desc = 'show base file' } }, -- show the base of the file
-                    { '<Enter>', '<Cmd>:Neogit:<CR>', { exit = true, desc = 'Neogit' } },
                     { 'q', nil, { exit = true, nowait = true, desc = 'exit' } },
                     { '<Esc>', nil, { exit = true, nowait = true, desc = 'exit' } },
                 }
@@ -91,5 +84,4 @@ return {
         },
         config = true
     },
-    {'akinsho/git-conflict.nvim', version = "*", config = true}
 }
