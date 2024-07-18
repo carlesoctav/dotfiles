@@ -44,6 +44,7 @@ vim.keymap.set("n", "<leader>P", [["+P]])
 vim.keymap.set({"n", "v"}, "<leader>c", [["_c]])
 
 
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
 vim.keymap.set('n', ']b', '<cmd>bnext<CR>')
 vim.keymap.set('n', '<C-q>', '<cmd>bdelete<CR>')
