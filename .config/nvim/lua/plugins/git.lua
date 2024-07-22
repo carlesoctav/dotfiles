@@ -82,6 +82,10 @@ return {
             "sindrets/diffview.nvim",
             "nvim-telescope/telescope.nvim",
         },
-        config = true
+        config = function ()
+           require("neogit").setup({
+                kind="split_above"
+            })
+        end
     },
 }
