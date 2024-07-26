@@ -83,9 +83,7 @@ return {
             "nvim-telescope/telescope.nvim",
         },
         config = function ()
-           require("neogit").setup({
-                kind="split_above"
-            })
+           require("neogit").setup({})
         end
     },
 }
