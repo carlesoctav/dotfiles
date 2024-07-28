@@ -24,6 +24,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "q", "<nop>")
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -33,6 +34,8 @@ vim.keymap.set("n", "<PageDown>", "<C-d>zz")
 vim.keymap.set("n", "<PageUp>", "<C-u>zz")
 -- vim.keymap.set("n", "<Home>", "_")
 -- vim.keymap.set("n", "<End>", "$")
+--
+vim.keymap.set('n', '<leader>=', '\'[V\']=') --[[ goat remap ]]
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
