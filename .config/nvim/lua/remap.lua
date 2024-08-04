@@ -36,6 +36,7 @@ vim.keymap.set("n", "<PageUp>", "<C-u>zz")
 -- vim.keymap.set("n", "<End>", "$")
 --
 vim.keymap.set('n', '<leader>=', '\'[V\']=') --[[ goat remap ]]
+vim.keymap.set('n', '<leader>v', '\'[V\']')
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
