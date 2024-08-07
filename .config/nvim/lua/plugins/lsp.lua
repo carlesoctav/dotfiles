@@ -27,7 +27,7 @@ return {
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help )
-				map('<leader>f', require('conform').format, 'format with conform')
+				map('<leader>f', function() require('conform').format({lsp_fallback = true}) end, 'format with conform')
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -51,12 +51,6 @@ return {
 					pyright = {
 						-- Using Ruff's import organizer
 						disableOrganizeImports = true,
-					},
-					python = {
-						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
-							ignore = { "*" },
-						},
 					},
 				},
 				disableOrganizeImports = true,
