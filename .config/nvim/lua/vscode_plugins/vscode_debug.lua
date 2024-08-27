@@ -1,7 +1,7 @@
 return {
     { "andrewferrier/debugprint.nvim",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter"
+            "nvim-treesitter/nvim-treesitter",
             "nvimtools/hydra.nvim",
         },
         version = "*",
