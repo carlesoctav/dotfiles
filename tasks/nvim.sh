@@ -1,9 +1,9 @@
+#!/bin/bash
+
+# Download the latest Neovim AppImage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+
+# Make the AppImage executable
 chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
-sudo rm -rf /squashfs-root 
-sudo rm /usr/bin/nvim
-sudo mv squashfs-root /
-sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+mv ./nvim.appimage /usr/local/bin/nvim
 nvim
