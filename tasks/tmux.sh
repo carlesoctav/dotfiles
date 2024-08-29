@@ -7,4 +7,7 @@ curl -s https://api.github.com/repos/nelsonenzo/tmux-appimage/releases/latest \
 
 ## optionaly, move it into your $PATH
 mv tmux.appimage /usr/local/bin/tmux
-tmux
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
