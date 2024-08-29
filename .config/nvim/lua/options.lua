@@ -30,7 +30,7 @@ opt.smartcase = true
 opt.incsearch = true
 opt.hlsearch = true
 
--- using undofile and remove backup annoying features
+-- using undofile 
 opt.swapfile = false
 opt.backup = false
 opt.undofile = true

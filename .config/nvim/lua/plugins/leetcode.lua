@@ -17,7 +17,7 @@ return {
                 home = "/home/carlesoctav/personal/proof-by-ac/leetcode/",
                 cache = vim.fn.stdpath("cache") .. "/leetcode",
             },
-            injector = { ---@type table<lc.lang, lc.inject>
+            injector = { 
                 ["cpp"] = {
                     before = { "#include <bits/stdc++.h>", "using namespace std;" },
                     after = "int main() {}",
