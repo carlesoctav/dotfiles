@@ -21,7 +21,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		config = function()
-			require("neogit").setup({})
+			require("neogit").setup({ kind = "replace" })
 		end,
 	},
 }
