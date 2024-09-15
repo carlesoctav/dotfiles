@@ -1,26 +1,28 @@
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
-		local map = function(keys, func, desc)
-			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+		local map = function(keys, func)
+			vim.keymap.set("n", keys, func, { buffer = event.buf })
 		end
 
-		map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-		map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-		map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-		map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-		map("[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
-		map("]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
-		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-		map("K", vim.lsp.buf.hover, "Hover Documentation")
-		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help)
+		map("gd", require("telescope.builtin").lsp_definitions)
+		map("gr", require("telescope.builtin").lsp_references)
+		map("gI", require("telescope.builtin").lsp_implementations)
+		map("<leader>D", require("telescope.builtin").lsp_type_definitions)
+		map("<leader>ds", require("telescope.builtin").lsp_document_symbols)
+		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+		map("<leader>rn", vim.lsp.buf.rename)
+		map("[d", vim.diagnostic.goto_prev)
+		map("]d", vim.diagnostic.goto_next)
+		map("<leader>ca", vim.lsp.buf.code_action)
+		map("K", vim.lsp.buf.hover)
+		map("gD", vim.lsp.buf.declaration)
 		map("<leader>f", function()
 			require("conform").format({ lsp_fallback = true })
-		end, "format with conform")
+		end)
+
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help)
+
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client.server_capabilities.documentHighlightProvider then
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -81,7 +83,7 @@ require("mason-lspconfig").setup({
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "ruff" },
+		python = { "ruff", "black" },
 		javascript = { { "prettierd", "prettier" } },
 	},
 })
