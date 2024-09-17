@@ -12,6 +12,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "q", "<nop>") 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -37,4 +38,13 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "[b", "<cmd>bprevious<CR>")
 vim.keymap.set("n", "]b", "<cmd>bnext<CR>")
-vim.keymap.set("n", "<C-q>", "<cmd>bdelete<CR>")
+-- vim.keymap.set("n", "<C-q>", "<cmd>bdelete<CR>")
+
+
+
+vim.keymap.set("n", "<M-h>", "<c-w>5<")
+vim.keymap.set("n", "<M-l>", "<c-w>5>")
+vim.keymap.set("n", "<M-k>", "<C-W>+")
+vim.keymap.set("n", "<M-j>", "<C-W>-")
+
+

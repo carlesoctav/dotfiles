@@ -12,6 +12,10 @@ return {
 			require("mini.tabline").setup()
 			require("mini.statusline").setup()
 			require("mini.jump").setup()
+			require("mini.bufremove").setup()
+			vim.keymap.set("n", "<C-q>", function()
+				require("mini.bufremove").delete(0, false)
+			end)
 		end,
 	},
 	{

@@ -35,7 +35,6 @@ local cmp = require 'cmp'
           { name = 'nvim_lsp' },
           {name = "otter" }, 
           { name = 'luasnip' },
-          { name = 'nvim_lsp_signature_help' },
           { name = 'path',
             option = {
               get_cwd = function() return vim.fn.getcwd() end,

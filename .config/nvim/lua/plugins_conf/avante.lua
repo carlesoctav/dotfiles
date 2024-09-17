@@ -42,5 +42,5 @@ require("avante").setup({
 			reverse_switch_windows = "<S-Tab>",
 		},
 	},
-	hints = { enabled = true },
+	hints = { enabled = false },
 })

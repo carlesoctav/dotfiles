@@ -19,7 +19,7 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 
--- opt.autoindent = true
+opt.autoindent = true
 opt.smartindent = true
 
 -- buat search
@@ -30,7 +30,7 @@ opt.smartcase = true
 opt.incsearch = true
 opt.hlsearch = true
 
--- using undofile 
+-- using undofile
 opt.swapfile = false
 opt.backup = false
 opt.undofile = true
@@ -39,7 +39,7 @@ opt.undofile = true
 opt.termguicolors = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
-opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- opt.list = true
+-- opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.cursorline = true
 opt.showmode = false
