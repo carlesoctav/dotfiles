@@ -1,9 +1,9 @@
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
-	lazy = false,
+	lazy = true,
 	version = false,
-	build = "make",
+	build = "make BUILD_FROM_SOURCE=true",
 	dependencies = {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",

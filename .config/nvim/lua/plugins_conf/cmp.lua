@@ -2,6 +2,9 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 luasnip.config.setup({})
 
+
+
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -33,7 +36,6 @@ cmp.setup({
 	}),
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "copilot"},
 		{ name = "otter" },
 		{ name = "luasnip" },
 		{
@@ -46,3 +48,7 @@ cmp.setup({
 		},
 	},
 })
+
+for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("./snippets/*.lua", true)) do
+  loadfile(ft_path)()
+end
