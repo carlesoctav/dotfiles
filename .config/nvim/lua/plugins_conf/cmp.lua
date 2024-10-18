@@ -3,7 +3,7 @@ local luasnip = require("luasnip")
 luasnip.config.setup({})
 
 for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("snippets/*.lua", true)) do
-  loadfile(ft_path)()
+	loadfile(ft_path)()
 end
 
 cmp.setup({
@@ -39,6 +39,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "otter" },
 		{ name = "luasnip" },
+		{ name = "cmp-dbee" },
 		{
 			name = "path",
 			option = {
@@ -49,4 +50,3 @@ cmp.setup({
 		},
 	},
 })
-
