@@ -1,5 +1,4 @@
-apt update
-apt install stow
-apt install libfuse2
+sudo apt update
+sudo apt install stow
+sudo apt install libfuse2
 mv ~/.bashrc ~/.bashrc.bak
-stow -d ~/dotfiles/
