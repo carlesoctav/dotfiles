@@ -1,5 +1,8 @@
 require("avante").setup({
 	provider = "copilot",
+	copilot = {
+		model = "claude-3.5-sonnet",
+	},
 	behaviour = {
 		auto_suggestions = false,
 		auto_set_highlight_group = true,
