@@ -38,8 +38,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 local servers = {
 	pyright = {},
 	lua_ls = {
@@ -64,20 +62,7 @@ local ensure_installed = vim.tbl_keys(servers or {})
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 require("mason-lspconfig").setup({
-	handlers = {
-		function(server_name)
-			local server = servers[server_name] or {}
-			require("lspconfig")[server_name].setup({
-				cmd = server.cmd,
-				settings = server.settings,
-				filetypes = server.filetypes,
-				-- This handles overriding only values explicitly passed
-				-- by the server configuration above. Useful when disabling
-				-- certain features of an LSP (for example, turning off formatting for tsserver)
-				capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
-			})
-		end,
-	},
+	automatic_enable = vim.tbl_keys(servers or {})
 })
 
 require("conform").setup({
