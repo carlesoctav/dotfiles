@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			require("conform").format({ lsp_fallback = true })
 		end)
 
-		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help)
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client.server_capabilities.documentHighlightProvider then
