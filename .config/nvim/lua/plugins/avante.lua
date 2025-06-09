@@ -39,8 +39,20 @@ return {
 							make_slash_commands = true, -- Add prompts as /slash commands
 						}
 					}
+				},
+				strategies = {
+					chat = {
+						variables = {
+							["buffer"] = {
+								opts = {
+									default_params = 'pin', -- or 'watch'
+								},
+							},
+						},
+					},
 				}
 			})
+			vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>")
 		end,
 	}
 }
