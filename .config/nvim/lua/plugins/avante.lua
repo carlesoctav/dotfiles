@@ -22,13 +22,12 @@ return {
 		"olimorris/codecompanion.nvim",
 
 		dependencies = {
-			"zbirenbaum/copilot.lua",
+			"github/copilot.vim",
 		},
+		init = function()
+			vim.g.copilot_enabled = false
+		end,
 		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
 			require("codecompanion").setup({
 				extensions = {
 					mcphub = {
@@ -42,6 +41,11 @@ return {
 				},
 				strategies = {
 					chat = {
+						adapter = {
+							name = "copilot",
+							model = "claude-sonnet-4-20250514",
+						},
+
 						variables = {
 							["buffer"] = {
 								opts = {
