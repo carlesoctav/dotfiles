@@ -9,18 +9,18 @@ return {
         opts = {
             keymaps = {
                 normal = {
-                    plain_below = "g?p",
-                    plain_above = "g?P",
-                    variable_below = "g?v",
-                    variable_above = "g?V",
+                    plain_below = "<leader>dp",
+                    plain_above = "<leader>dP",
+                    variable_below = "<leader>dv",
+                    variable_above = "<leader>dV",
                     variable_below_alwaysprompt = "",
                     variable_above_alwaysprompt = "",
-                    surround_plain = "g?sp",
-                    surround_variable = "g?sv",
+                    surround_plain = "<leader>dsp",
+                    surround_variable = "<leader>dsv",
                     surround_variable_alwaysprompt = "",
-                    textobj_below = "g?o",
-                    textobj_above = "g?O",
-                    textobj_surround = "g?so",
+                    textobj_below = "<leader>do",
+                    textobj_above = "<leader>dO",
+                    textobj_surround = "<leader>dso",
                     toggle_comment_debug_prints = "",
                     delete_debug_prints = "",
                 },
@@ -29,8 +29,8 @@ return {
                     variable = "<C-G>v",
                 },
                 visual = {
-                    variable_below = "g?v",
-                    variable_above = "g?V",
+                    variable_below = "<leader>dv",
+                    variable_above = "<leader>dV",
                 },
             },
         }
