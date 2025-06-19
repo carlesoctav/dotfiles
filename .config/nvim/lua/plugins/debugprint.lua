@@ -1,13 +1,38 @@
 return {
-    { "andrewferrier/debugprint.nvim",
+    {
+        "andrewferrier/debugprint.nvim",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvimtools/hydra.nvim"
+            "echasnovski/mini.nvim",         -- Optional: Needed for line highlighting (full mini.nvim plugin)
+            "nvim-telescope/telescope.nvim", -- Optional: If you want to use the `:Debugprint search` command with telescope.nvim
         },
         version = "*",
-        config = function()
-            require("plugins_conf.debugprint")
-        end
+        opts = {
+            keymaps = {
+                normal = {
+                    plain_below = "g?p",
+                    plain_above = "g?P",
+                    variable_below = "g?v",
+                    variable_above = "g?V",
+                    variable_below_alwaysprompt = "",
+                    variable_above_alwaysprompt = "",
+                    surround_plain = "g?sp",
+                    surround_variable = "g?sv",
+                    surround_variable_alwaysprompt = "",
+                    textobj_below = "g?o",
+                    textobj_above = "g?O",
+                    textobj_surround = "g?so",
+                    toggle_comment_debug_prints = "",
+                    delete_debug_prints = "",
+                },
+                insert = {
+                    plain = "<C-G>p",
+                    variable = "<C-G>v",
+                },
+                visual = {
+                    variable_below = "g?v",
+                    variable_above = "g?V",
+                },
+            },
+        }
     }
-
 }

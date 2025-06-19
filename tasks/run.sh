@@ -1,1 +1,1 @@
-./tmux.sh && ./python.sh && ./node.s& ./tooling.sh && ./nvim.sh
+./tmux.sh && ./python.sh && ./node.sh && ./tooling.sh && ./nvim.sh
