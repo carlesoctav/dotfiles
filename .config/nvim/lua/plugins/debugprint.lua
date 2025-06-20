@@ -21,8 +21,8 @@ return {
                     textobj_below = "<leader>do",
                     textobj_above = "<leader>dO",
                     textobj_surround = "<leader>dso",
-                    toggle_comment_debug_prints = "",
-                    delete_debug_prints = "",
+                    toggle_comment_debug_prints = "<leader>dto",
+                    delete_debug_prints = "<leader>dtd",
                 },
                 insert = {
                     plain = "<C-G>p",

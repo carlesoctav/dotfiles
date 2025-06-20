@@ -1,0 +1,19 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "provider": {
+        "copilot": {
+            "npm": "@ai-sdk/openai-compatible",
+            "options": {
+                "baseURL": "https://api.githubcopilot.com"
+            },
+            "models": {
+                "gpt-4o": {
+                    "name": "gpt-4o"
+                },
+                "claude-3.7-sonnet": {
+                    "name": "claude-3.7-sonnet"
+                }
+            }
+        }
+    }
+}
