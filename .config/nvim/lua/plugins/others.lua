@@ -1,8 +1,15 @@
 return {
-	{ "numToStr/Comment.nvim", opts = {} },
+	{ "numToStr/Comment.nvim",      opts = {} },
 	"tpope/vim-sleuth",
 	"folke/todo-comments.nvim",
 	{ "nvim-tree/nvim-web-devicons" },
+	{
+		'nvim-focus/focus.nvim',
+		version = '*',
+		config = function()
+			require("focus").setup()
+		end
+	},
 	{
 		"echasnovski/mini.nvim",
 		config = function()
