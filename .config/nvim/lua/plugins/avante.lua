@@ -4,7 +4,6 @@ return {
 		config = function()
 			local diff = require("mini.diff")
 			diff.setup({
-				-- Disabled by default
 				source = diff.gen_source.none(),
 			})
 		end,
@@ -23,11 +22,6 @@ return {
 			require("codecompanion").setup({
 				strategies = {
 					chat = {
-						adapter = {
-							name = "copilot",
-							model = "claude-sonnet-4",
-						},
-
 						variables = {
 							["buffer"] = {
 								opts = {
