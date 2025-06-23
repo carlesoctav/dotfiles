@@ -138,7 +138,15 @@ alias suggest="gh copilot suggest"
 alias vi="nvim ."
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right:70% | xargs tldr --color=always'
 alias leet='nvim leetcode.nvim'
+alias dlogs='docker ps --format "{{.Names}}" | fzf | xargs -r docker logs -f --tail 200'
+alias dexec='container=$(docker ps --format "{{.Names}}" | fzf) && [ -n "$container" ] && docker exec -it "$container" bash'
 
 . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+. "$HOME/.local/bin/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
