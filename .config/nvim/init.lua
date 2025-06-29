@@ -1,5 +1,14 @@
+
 require("options")
 require("remap")
+
+
+vim.filetype.add {
+  extension = {
+    profile = 'sd',
+    sd = 'sd'
+  }
+}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

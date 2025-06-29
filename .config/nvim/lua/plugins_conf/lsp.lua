@@ -77,6 +77,17 @@ for server_name, config in pairs(servers) do
 	vim.lsp.config(server_name, config)
 end
 
+
+
+-- vespa lsp
+local schemals_config = {
+		cmd = { "java", "-jar", "/usr/local/bin/vls.jar" },
+		filetypes = { "sd" },
+	},
+
+vim.lsp.enable("schemals")
+vim.lsp.config("schemals",schemals_config)
+
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
