@@ -3,13 +3,13 @@ return {
 	"tpope/vim-sleuth",
 	"folke/todo-comments.nvim",
 	{ "nvim-tree/nvim-web-devicons" },
-	{
-		'nvim-focus/focus.nvim',
-		version = '*',
-		config = function()
-			require("plugins_conf.focus")
-		end
-	},
+	-- {
+	-- 	'nvim-focus/focus.nvim',
+	-- 	version = '*',
+	-- 	config = function()
+	-- 		require("plugins_conf.focus")
+	-- 	end
+	-- },
 	{
 		"echasnovski/mini.nvim",
 		config = function()
