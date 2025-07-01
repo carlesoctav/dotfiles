@@ -133,8 +133,6 @@ bind -x '"\C-f":"tmux-sessionizer"'
 
 export MANPAGER="nvim +Man!"
 
-alias explain="gh copilot explain"
-alias suggest="gh copilot suggest"
 alias vi="nvim ."
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right:70% | xargs tldr --color=always'
 alias leet='nvim leetcode.nvim'
