@@ -41,4 +41,8 @@ return {
 			require("neogit").setup({ kind = "replace" })
 		end,
 	},
+	{
+		"aaronhallaert/advanced-git-search.nvim",
+		cmd = { "AdvancedGitSearch" },
+	}
 }

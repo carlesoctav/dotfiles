@@ -7,8 +7,14 @@ require("telescope").setup({
 			},
 		},
 	},
+	extensions = {
+		advanced_git_search = {
+			diff_plugin = "diffview",
+		},
+	},
 })
 
+require("telescope").load_extension("advanced_git_search")
 vim.keymap.set("n", "<C-p>", require("telescope.builtin").git_files)
 vim.keymap.set("n", "<leader>sf", function()
 	require("telescope.builtin").find_files({ hidden = true })
@@ -26,4 +32,3 @@ vim.keymap.set("n", "<leader>/", function()
 		previewer = false,
 	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
-
