@@ -47,7 +47,18 @@ vim.api.nvim_create_autocmd('LspDetach', {
 })
 
 local servers = {
-	pyright = {},
+	pyright = {
+		settings = {
+			pyright = {
+				disableOrganizeImports = true,
+			},
+			python = {
+				analysis = {
+					ignore = { '*' },
+				},
+			},
+		},
+	},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -85,8 +96,8 @@ local schemals_config = {
 		filetypes = { "sd" },
 	},
 
-vim.lsp.enable("schemals")
-vim.lsp.config("schemals",schemals_config)
+	vim.lsp.enable("schemals")
+vim.lsp.config("schemals", schemals_config)
 
 require("conform").setup({
 	formatters_by_ft = {
