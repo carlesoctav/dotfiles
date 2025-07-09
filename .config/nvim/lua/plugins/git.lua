@@ -1,16 +1,35 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
-			},
-		},
+		config = function(opts)
+			require('gitsigns').setup({
+				sign_priority = 100,
+				on_attach = function(bufnr)
+					local gitsigns = require('gitsigns')
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+
+					map('n', ']h', function()
+						gitsigns.nav_hunk('next')
+					end)
+
+					map('n', '[h', function()
+						gitsigns.nav_hunk('prev')
+					end)
+
+					map('n', '<leader>th', function()
+						local trouble = require("trouble")
+						gitsigns.setqflist('all', { open = false })
+						trouble.toggle('qflist')
+					end)
+
+					map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
+				end
+			})
+		end
 	},
 
 	{
