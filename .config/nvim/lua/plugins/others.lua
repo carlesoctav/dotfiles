@@ -1,8 +1,14 @@
 return {
 	{ "numToStr/Comment.nvim",      opts = {} },
 	"tpope/vim-sleuth",
-	"folke/todo-comments.nvim",
-	{ "nvim-tree/nvim-web-devicons" },
+	{
+		"folke/todo-comments.nvim",
+		opts = {}
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		opts = {}
+	},
 	-- {
 	-- 	'nvim-focus/focus.nvim',
 	-- 	version = '*',
@@ -35,6 +41,8 @@ return {
 			scope = { exclude = { language = { "lua" } } },
 		},
 	},
-	{ "LunarVim/bigfile.nvim" },
-	{ "nvim-tree/nvim-web-devicons" },
+	{
+		"LunarVim/bigfile.nvim",
+		opts = {}
+	},
 }
