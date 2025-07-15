@@ -20,6 +20,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<PageDown>", "<C-d>zz")
 vim.keymap.set("n", "<PageUp>", "<C-u>zz")
+vim.keymap.set("v", "<PageDown>", "<C-d>zz")
+vim.keymap.set("v", "<PageUp>", "<C-u>zz")
 
 vim.keymap.set('n', '<leader>=', '\'[V\']=') --[[ goat remap ]]
 vim.keymap.set('n', '<leader>v', '\'[V\']')
