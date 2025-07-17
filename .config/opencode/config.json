@@ -3,7 +3,7 @@
   "model": "anthropic/claude-sonnet-4-20250514",
   "mode": {
     "codexlike": {
-      "model": "github-copilot/o4-mini",
+      "model": "github-copilot/gpt-4.1",
       "prompt": "{file:./prompts/codex.txt}"
     }
   }
