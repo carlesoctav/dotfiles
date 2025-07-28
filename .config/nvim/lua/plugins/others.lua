@@ -1,5 +1,5 @@
 return {
-	{ "numToStr/Comment.nvim",      opts = {} },
+	{ "numToStr/Comment.nvim", opts = {} },
 	"tpope/vim-sleuth",
 	{
 		"folke/todo-comments.nvim",
@@ -26,7 +26,15 @@ return {
 			require("mini.statusline").setup()
 			require("mini.jump").setup()
 			require("mini.bufremove").setup()
-			require("mini.splitjoin").setup()
+			require("mini.splitjoin").setup(
+				{
+					mappings = {
+						toggle = 'gs',
+						split = '',
+						join = '',
+					},
+				}
+			)
 			vim.keymap.set("n", "<C-q>", function()
 				require("mini.bufremove").delete(0, false)
 			end)
