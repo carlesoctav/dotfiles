@@ -12,7 +12,7 @@ return {
         },
         opts = {
             -- configuration goes here
-            lang = "golang",
+            lang = "python3",
             storage = {
                 home = "/home/carlesoctav/personal/proof-by-ac/leetcode/",
                 cache = vim.fn.stdpath("cache") .. "/leetcode",
