@@ -5,10 +5,6 @@ return {
 		"folke/todo-comments.nvim",
 		opts = {}
 	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		opts = {}
-	},
 	-- {
 	-- 	'nvim-focus/focus.nvim',
 	-- 	version = '*',
