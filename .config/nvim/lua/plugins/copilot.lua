@@ -4,16 +4,6 @@ return {
 
     dependencies = {
       "github/copilot.vim",
-      {
-        "echasnovski/mini.diff",
-        config = function()
-          local diff = require("mini.diff")
-          diff.setup({
-            -- Disabled by default
-            source = diff.gen_source.none(),
-          })
-        end,
-      },
     },
     init = function()
       vim.g.copilot_enabled = false
@@ -32,9 +22,9 @@ return {
           },
         }
       })
-      vim.keymap.set("x", "<leader>ad", ":CodeCompanion #{buffer} replace<cr>")
-      vim.keymap.set("x", "<leader>aa", ":CodeCompanion #{buffer} #{lsp} replace<cr>")
-      vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChatToggle<cr>")
+      vim.keymap.set("x", "<leader>aa", ":CodeCompanion #{buffer} replace ")
+      vim.keymap.set("x", "<leader>ad", ":CodeCompanion #{buffer} #{lsp} replace ")
+      vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>")
     end,
   }
 }
