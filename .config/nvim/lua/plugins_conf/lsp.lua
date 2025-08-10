@@ -5,6 +5,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf })
 		end
 
+		local diagnostics_qf_open = false
+
+		local function toggle_diagnostics_qf()
+			local qf_title = "Diagnostics"
+			local current_qflist = vim.fn.getqflist({ title = 0 })
+			
+			if diagnostics_qf_open and current_qflist.title == qf_title then
+				vim.cmd("cclose")
+				diagnostics_qf_open = false
+			else
+				vim.diagnostic.setqflist({
+					title = qf_title,
+					open = true,
+				})
+				diagnostics_qf_open = true
+			end
+		end
+
 		map("gd", require("telescope.builtin").lsp_definitions)
 		map("gr", require("telescope.builtin").lsp_references)
 		map("gI", require("telescope.builtin").lsp_implementations)
@@ -17,6 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>ra", vim.lsp.buf.code_action)
 		map("K", vim.lsp.buf.hover)
 		map("gD", vim.lsp.buf.declaration)
+		map("<leader>td", toggle_diagnostics_qf)
 		map("<leader>f", function()
 			require("conform").format({ lsp_fallback = true })
 		end)

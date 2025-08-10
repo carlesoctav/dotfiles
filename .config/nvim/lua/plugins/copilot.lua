@@ -22,8 +22,8 @@ return {
           },
         }
       })
-      vim.keymap.set("x", "<leader>ad", ":CodeCompanion #{buffer} #{lsp} replace ")
-      vim.keymap.set("x", "<leader>aa", ":CodeCompanion #{buffer} replace ")
+      vim.keymap.set("x", "<leader>aa", ":CodeCompanionChat #{buffer}")
+      vim.keymap.set({"n", "x"}, "<leader>ad", ":CodeCompanionChat #{buffer} #{lsp}")
       vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>")
     end,
   }
