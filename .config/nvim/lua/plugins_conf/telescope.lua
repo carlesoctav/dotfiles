@@ -8,13 +8,13 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
-		advanced_git_search = {
-			diff_plugin = "diffview",
-		},
+		["ui-select"] = {
+		  require("telescope.themes").get_dropdown { }
+		}
 	},
 })
 
-require("telescope").load_extension("advanced_git_search")
+require("telescope").load_extension("ui-select")
 vim.keymap.set("n", "<C-p>", require("telescope.builtin").git_files)
 vim.keymap.set("n", "<leader>sf", function()
 	require("telescope.builtin").find_files({ hidden = true })

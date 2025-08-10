@@ -2,9 +2,17 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "github-copilot/claude-sonnet-4",
   "mode": {
-    "codexlike": {
+    "5-codex": {
+      "model": "github-copilot/gpt-5",
+      "prompt": "{file:./prompts/gpt-5.txt}"
+    },
+    "4.1": {
       "model": "github-copilot/gpt-4.1",
-      "prompt": "{file:./prompts/codex.txt}"
+      "prompt": "{file:./prompts/gpt-4.1.txt}"
+    },
+    "5-ant": {
+      "model": "github-copilot/gpt-5",
+      "prompt": "{file:./prompts/gpt-5.txt}"
     }
   }
 }

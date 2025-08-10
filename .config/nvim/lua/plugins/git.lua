@@ -21,9 +21,7 @@ return {
 					end)
 
 					map('n', '<leader>th', function()
-						local trouble = require("trouble")
-						gitsigns.setqflist('all', { open = false })
-						trouble.toggle('qflist')
+						gitsigns.setqflist('all')
 					end)
 
 					map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
@@ -57,11 +55,7 @@ return {
 			"sindrets/diffview.nvim"
 		},
 		config = function()
-			require("neogit").setup({ kind = "replace" })
+			require("neogit").setup({})
 		end,
-	},
-	{
-		"aaronhallaert/advanced-git-search.nvim",
-		cmd = { "AdvancedGitSearch" },
 	},
 }
