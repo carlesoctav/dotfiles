@@ -1,18 +1,34 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "github-copilot/claude-sonnet-4",
-  "mode": {
-    "5-codex": {
+  "agent": {
+    "5-codex-think": {
       "model": "github-copilot/gpt-5",
-      "prompt": "{file:./prompts/gpt-5.txt}"
+      "prompt": "{file:./prompts/codex.txt}",
+      "mode": "primary",
+      "reasoningEffort": "high",
+      "textVerbosity": "high"
     },
-    "4.1": {
-      "model": "github-copilot/gpt-4.1",
-      "prompt": "{file:./prompts/gpt-4.1.txt}"
+    "5-mini-codex-think": {
+      "model": "github-copilot/gpt-5-mini",
+      "prompt": "{file:./prompts/codex.txt}",
+      "mode": "primary",
+      "reasoningEffort": "high",
+      "textVerbosity": "high"
     },
-    "5-ant": {
+    "5-mini-codex-free": {
+      "model": "github-copilot/gpt-5-mini",
+      "prompt": "{file:./prompts/codex.txt}",
+      "mode": "primary",
+      "reasoningEffort": "medium",
+      "textVerbosity": "high"
+    },
+    "5-ant-think": {
       "model": "github-copilot/gpt-5",
-      "prompt": "{file:./prompts/gpt-5.txt}"
+      "prompt": "{file:./prompts/default.txt}",
+      "mode": "primary",
+      "reasoningEffort": "high",
+      "textVerbosity": "high"
     }
   }
 }
