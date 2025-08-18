@@ -12,6 +12,10 @@ return {
       require("codecompanion").setup({
         strategies = {
           chat = {
+            adapter = {
+              name = "copilot",
+              model = "gpt-5-mini",
+            },
             variables = {
               ["buffer"] = {
                 opts = {
@@ -23,7 +27,7 @@ return {
         }
       })
       vim.keymap.set("x", "<leader>aa", ":CodeCompanionChat #{buffer}")
-      vim.keymap.set({"n", "x"}, "<leader>ad", ":CodeCompanionChat #{buffer} #{lsp}")
+      vim.keymap.set({ "n", "x" }, "<leader>ad", ":CodeCompanionChat #{buffer} #{lsp}")
       vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>")
     end,
   }
