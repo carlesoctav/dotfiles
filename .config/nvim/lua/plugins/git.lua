@@ -55,7 +55,7 @@ return {
 			"sindrets/diffview.nvim"
 		},
 		config = function()
-			require("neogit").setup({})
+			require("neogit").setup({kind = "replace"})
 		end,
 	},
 }
