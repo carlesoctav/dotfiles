@@ -22,13 +22,6 @@
       "mode": "primary",
       "reasoningEffort": "medium",
       "textVerbosity": "high"
-    },
-    "5-ant-think": {
-      "model": "github-copilot/gpt-5",
-      "prompt": "{file:./prompts/default.txt}",
-      "mode": "primary",
-      "reasoningEffort": "high",
-      "textVerbosity": "high"
     }
   }
 }
