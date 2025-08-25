@@ -14,7 +14,7 @@ return {
           chat = {
             adapter = {
               name = "copilot",
-              model = "gpt-5-mini",
+              model = "gpt-4.1mini",
             },
             variables = {
               ["buffer"] = {
@@ -26,9 +26,10 @@ return {
           },
         }
       })
-      vim.keymap.set("x", "<leader>aa", ":CodeCompanionChat #{buffer}")
-      vim.keymap.set({ "n", "x" }, "<leader>ad", ":CodeCompanionChat #{buffer} #{lsp}")
-      vim.keymap.set("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>")
+      vim.keymap.set({ "x", "n" }, "<leader>aa", ":CodeCompanion #{buffer} ")
+      vim.keymap.set({ "n", "x" }, "<leader>ad", ":CodeCompanionChat #{buffer} #{lsp} ")
+      vim.keymap.set({ "x", "n" }, "<leader>ac", ":CodeCompanionChat #{buffer} ")
+      vim.keymap.set("n", "<leader>ta", "<cmd>CodeCompanionChat Toggle<cr>")
     end,
   }
 }
