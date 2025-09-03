@@ -7,6 +7,12 @@ return {
         },
         version = "*",
         opts = {
+            custom_print_statements = {
+                jax_debug = {
+                    statement = "jax.debug.print(%s)",
+                    -- Optionally, set other options like `commented = false`
+                },
+            },
             keymaps = {
                 normal = {
                     plain_below = "<leader>dp",
@@ -23,6 +29,7 @@ return {
                     textobj_surround = "<leader>dso",
                     toggle_comment_debug_prints = "<leader>dto",
                     delete_debug_prints = "<leader>dtd",
+                    jax_debug_below = "<leader>dj", -- new keymap for jax.debug.print()
                 },
                 insert = {
                     plain = "<C-G>p",

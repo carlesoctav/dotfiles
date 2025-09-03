@@ -7,21 +7,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		local diagnostics_qf_open = false
 
-		local function toggle_diagnostics_qf()
-			local qf_title = "Diagnostics"
-			local current_qflist = vim.fn.getqflist({ title = 0 })
-			
-			if diagnostics_qf_open and current_qflist.title == qf_title then
-				vim.cmd("cclose")
-				diagnostics_qf_open = false
-			else
-				vim.diagnostic.setqflist({
-					title = qf_title,
-					open = true,
-				})
-				diagnostics_qf_open = true
-			end
-		end
+
 
 		map("gd", require("telescope.builtin").lsp_definitions)
 		map("gr", require("telescope.builtin").lsp_references)
@@ -30,29 +16,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>ds", require("telescope.builtin").lsp_document_symbols)
 		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 		map("<leader>rn", vim.lsp.buf.rename)
-		map("[d", vim.diagnostic.goto_prev)
-		map("]d", vim.diagnostic.goto_next)
 		map("<leader>ra", vim.lsp.buf.code_action)
 		map("K", vim.lsp.buf.hover)
 		map("gD", vim.lsp.buf.declaration)
-		map("<leader>td", toggle_diagnostics_qf)
 		map("<leader>f", function()
 			require("conform").format({ lsp_fallback = true })
 		end)
 
+		vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help)
 
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-		if client and client.server_capabilities.documentHighlightProvider then
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				buffer = event.buf,
-				callback = vim.lsp.buf.document_highlight,
-			})
-
-			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-				buffer = event.buf,
-				callback = vim.lsp.buf.clear_references,
-			})
-		end
 	end,
 })
 
@@ -111,11 +83,11 @@ end
 
 -- vespa lsp
 local schemals_config = {
-		cmd = { "java", "-jar", "/usr/local/bin/vls.jar" },
-		filetypes = { "sd" },
-	},
+	    cmd = { "java", "-jar", "/usr/local/bin/vls.jar" },
+	    filetypes = { "sd" },
+    },
 
-	vim.lsp.enable("schemals")
+    vim.lsp.enable("schemals")
 vim.lsp.config("schemals", schemals_config)
 
 require("conform").setup({
@@ -126,30 +98,36 @@ require("conform").setup({
 	},
 })
 
-
-vim.diagnostic.config {
-	severity_sort = true,
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = false,
+	signs = false,
+	underline = false,
+	loclist = { open = false },
 	float = { border = 'rounded', source = 'if_many' },
-	underline = { severity = vim.diagnostic.severity.ERROR },
-	signs = vim.g.have_nerd_font and {
-		text = {
-			[vim.diagnostic.severity.ERROR] = '󰅚 ',
-			[vim.diagnostic.severity.WARN] = '󰀪 ',
-			[vim.diagnostic.severity.INFO] = '󰋽 ',
-			[vim.diagnostic.severity.HINT] = '󰌶 ',
-		},
-	} or {},
-	virtual_text = {
-		source = 'if_many',
-		spacing = 2,
-		format = function(diagnostic)
-			local diagnostic_message = {
-				[vim.diagnostic.severity.ERROR] = diagnostic.message,
-				[vim.diagnostic.severity.WARN] = diagnostic.message,
-				[vim.diagnostic.severity.INFO] = diagnostic.message,
-				[vim.diagnostic.severity.HINT] = diagnostic.message,
-			}
-			return diagnostic_message[diagnostic.severity]
-		end,
-	},
-}
+})
+
+vim.keymap.set('n', '[d', function()
+	vim.diagnostic.goto_prev({ float = true })
+end, { desc = 'Go to previous diagnostic and show float' })
+
+vim.keymap.set('n', ']d', function()
+	vim.diagnostic.goto_next({ float = true })
+end, { desc = 'Go to next diagnostic and show float' })
+
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+	callback = function(args)
+		vim.diagnostic.setloclist({ open = false }) 
+	end,
+})
+
+
+vim.keymap.set('n', '<leader>dl', function()
+	local loclist = vim.fn.getloclist(0, { title = 0, winid = 0 })
+	local is_open = loclist.winid ~= 0 and vim.api.nvim_win_is_valid(loclist.winid)
+	if is_open then
+		vim.cmd('lclose')
+	else
+		vim.diagnostic.setloclist({ open = true })
+	end
+end, { desc = 'Toggle diagnostics in location list' })

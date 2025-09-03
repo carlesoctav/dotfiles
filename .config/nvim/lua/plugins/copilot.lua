@@ -1,7 +1,8 @@
 return {
   {
-    "olimorris/codecompanion.nvim",
+   "olimorris/codecompanion.nvim", 
 
+    event = "VeryLazy",
     dependencies = {
       "github/copilot.vim",
     },
@@ -14,7 +15,7 @@ return {
           chat = {
             adapter = {
               name = "copilot",
-              model = "gpt-4.1mini",
+              model = "gpt-4.1",
             },
             variables = {
               ["buffer"] = {

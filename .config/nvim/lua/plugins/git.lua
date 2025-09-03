@@ -30,32 +30,7 @@ return {
 		end
 	},
 
-	{
-		"sindrets/diffview.nvim",
-		keys = {
-			{
-				"<leader>tv",
-				function()
-					if next(require("diffview.lib").views) == nil then
-						vim.cmd("DiffviewOpen")
-					else
-						vim.cmd("DiffviewClose")
-					end
-				end,
-				desc = "Toggle Diffview window",
-			},
-		},
-	},
+	"tpope/vim-fugitive",
+	{'akinsho/git-conflict.nvim', version = "*", config = true}
 
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"sindrets/diffview.nvim"
-		},
-		config = function()
-			require("neogit").setup({kind = "replace"})
-		end,
-	},
 }

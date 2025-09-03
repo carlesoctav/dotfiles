@@ -18,7 +18,7 @@ require("telescope").setup({
 						local entry = action_state.get_selected_entry()
 						-- close Telescope window properly prior to switching windows
 						actions.close(vim.api.nvim_get_current_buf())
-						vim.cmd(("DiffviewOpen %s^!"):format(entry.value))
+						vim.cmd(("Gvdiffsplit %s^!"):format(entry.value))
 					end,
 				},
 			},
@@ -31,7 +31,7 @@ require("telescope").setup({
 						local entry = action_state.get_selected_entry()
 						-- close Telescope window properly prior to switching windows
 						actions.close(vim.api.nvim_get_current_buf())
-						vim.cmd(("DiffviewOpen %s^!"):format(entry.value))
+						vim.cmd(("Gvdiffsplit %s^!"):format(entry.value))
 					end,
 				},
 			},
@@ -44,7 +44,7 @@ require("telescope").setup({
 						local entry = action_state.get_selected_entry()
 						-- close Telescope window properly prior to switching windows
 						actions.close(vim.api.nvim_get_current_buf())
-						vim.cmd(("DiffviewOpen %s.."):format(entry.value))
+						vim.cmd(("Gvdiffsplit %s^!"):format(entry.value))
 					end,
 				},
 			},
