@@ -15,19 +15,31 @@
 # limitations under the License.
 
 # Description:
-# bash setup_gcsfuse.sh DATASET_GCS_BUCKET=maxtext-dataset MOUNT_PATH=/tmp/gcsfuse FILE_PATH=/tmp/gcsfuse/my_dataset
+# gcs.sh [mode] [gcs_bucket] [mount_path] [file_path]
+# mode: ro or write_only
+# gcs_bucket: GCS bucket name (with or without gs://)
+# mount_path: Local mount path
+# file_path: Optional file path for cache prefill
 
 set -e
 
-# Set environment variables
-for ARGUMENT in "$@"; do
-    IFS='=' read -r KEY VALUE <<< "$ARGUMENT"
-    export "$KEY"="$VALUE"
-    echo "$KEY"="$VALUE"
-done
+# Check arguments
+if [[ $# -lt 3 ]]; then
+  echo "Usage: gcs.sh [mode] [gcs_bucket] [mount_path] [file_path]"
+  echo "  mode: ro or write_only"
+  echo "  gcs_bucket: GCS bucket name"
+  echo "  mount_path: Local mount path"
+  echo "  file_path: Optional file path for cache prefill"
+  exit 1
+fi
 
-if [[ -z ${DATASET_GCS_BUCKET} || -z ${MOUNT_PATH} ]]; then
-  echo "Please set arguments: DATASET_GCS_BUCKET and MOUNT_PATH"
+MODE=$1
+DATASET_GCS_BUCKET=$2
+MOUNT_PATH=$3
+FILE_PATH=$4
+
+if [[ "$MODE" != "ro" && "$MODE" != "write_only" ]]; then
+  echo "Invalid mode: $MODE. Must be 'ro' or 'write_only'"
   exit 1
 fi
 
@@ -45,9 +57,16 @@ mkdir -p $MOUNT_PATH
 
 # see https://cloud.google.com/storage/docs/gcsfuse-cli for all configurable options of gcsfuse CLI
 TIMESTAMP=$(date +%Y%m%d-%H%M)
-gcsfuse -o ro --implicit-dirs --log-severity=debug \
-        --type-cache-max-size-mb=-1 --stat-cache-max-size-mb=-1 --kernel-list-cache-ttl-secs=-1 --metadata-cache-ttl-secs=-1 \
-        --log-file=$HOME/gcsfuse_$TIMESTAMP.json "$DATASET_GCS_BUCKET" "$MOUNT_PATH"
+
+if [[ "$MODE" == "ro" ]]; then
+  gcsfuse -o ro --implicit-dirs --log-severity=debug \
+          --type-cache-max-size-mb=-1 --stat-cache-max-size-mb=-1 --kernel-list-cache-ttl-secs=-1 --metadata-cache-ttl-secs=-1 \
+          --log-file=$HOME/gcsfuse_$TIMESTAMP.json "$DATASET_GCS_BUCKET" "$MOUNT_PATH"
+else
+  gcsfuse --implicit-dirs --log-severity=debug \
+          --type-cache-max-size-mb=-1 --stat-cache-max-size-mb=-1 --kernel-list-cache-ttl-secs=-1 --metadata-cache-ttl-secs=-1 \
+          --log-file=$HOME/gcsfuse_$TIMESTAMP.json "$DATASET_GCS_BUCKET" "$MOUNT_PATH"
+fi
 
 # Use ls to prefill the metadata cache: https://cloud.google.com/storage/docs/cloud-storage-fuse/performance#improve-first-time-reads
 if [[ ! -z ${FILE_PATH} ]] ; then 
