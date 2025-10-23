@@ -1,0 +1,7 @@
+include=~/.config/omarchy/current/theme/mako.ini
+
+[app-name=WorkspaceOSD]
+anchor=bottom-center
+default-timeout=1500
+text-alignment=center
+font=sans-serif 20px

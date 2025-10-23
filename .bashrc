@@ -122,11 +122,6 @@ fi
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 
-# added by Webi for pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
 PATH="$PATH":"$HOME/.config/scripts/"
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 bind -x '"\C-f":"tmux-sessionizer"'
@@ -134,10 +129,11 @@ bind -x '"\C-f":"tmux-sessionizer"'
 export MANPAGER="nvim +Man!"
 
 alias vi="nvim ."
-alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right:70% | xargs tldr --color=always'
+alias tldrf='tldr --list | fzf --preview "tldr --color {1}" --preview-window=right:70% | xargs tldr --color'
 alias leet='nvim leetcode.nvim'
 alias dlogs='docker ps --format "{{.Names}}" | fzf | xargs -r docker logs -f --tail 200'
 alias dexec='container=$(docker ps --format "{{.Names}}" | fzf) && [ -n "$container" ] && docker exec -it "$container" bash'
+alias rtc='systemctl --user restart touchcursor.service'
 
 . "$HOME/.cargo/env"
 
@@ -149,3 +145,5 @@ export EDITOR="nvim"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/share/../bin/env"

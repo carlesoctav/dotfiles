@@ -1,0 +1,7 @@
+# Touchcursor helper rules
+# Trigger a HUP signal to touchcursor whenever a known keyboard is (re)attached.
+# Regenerate this list if you add/remove keyboards. Names must match `hyprctl devices`
+# or `grep -E 'Name=' /proc/bus/input/devices`.
+
+SUBSYSTEM=="input", KERNEL=="event*", ACTION=="add", ATTRS{name}=="BY Tech Air60", RUN+="/etc/udev/touchcursor-reload.sh carlesoctav /usr/bin/touchcursor"
+SUBSYSTEM=="input", KERNEL=="event*", ACTION=="add", ATTRS{name}=="AT Translated Set 2 keyboard", RUN+="/etc/udev/touchcursor-reload.sh carlesoctav /usr/bin/touchcursor"
