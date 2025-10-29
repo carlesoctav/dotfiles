@@ -106,7 +106,7 @@ return {
 							---When chat is cleared with `gx` delete the chat from history
 							delete_on_clearing_chat = false,
 							---Directory path to save the chats
-							dir_to_save = "~/personal/proof-im-good-to-ai",
+							dir_to_save = vim.fn.expand("~") .. "/personal/proof-im-good-to-ai",
 							---Enable detailed logging for history extension
 							enable_logging = false,
 
