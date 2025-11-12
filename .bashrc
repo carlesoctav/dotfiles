@@ -123,7 +123,8 @@ fi
 
 
 PATH="$PATH":"$HOME/.config/scripts/"
-export PYTHONPATH=$PYTHONPATH:$(pwd)
+# export PYTHONPATH=$PYTHONPATH:$(pwd)
+# now i know 
 bind -x '"\C-f":"tmux-sessionizer"'
 
 export MANPAGER="nvim +Man!"
