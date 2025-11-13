@@ -1,4 +1,4 @@
 sudo apt update
-sudo apt install stow
-sudo apt install libfuse2 fuse
+sudo apt install -y stow
+sudo apt install -y libfuse2 fuse
 mv ~/.bashrc ~/.bashrc.bak
