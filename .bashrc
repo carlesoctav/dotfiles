@@ -122,7 +122,7 @@ fi
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 
-PATH="$PATH":"$HOME/.config/scripts/"
+PATH="$PATH":"$HOME/.config/scripts:$HOME/tpu-commands"
 # export PYTHONPATH=$PYTHONPATH:$(pwd)
 # now i know 
 bind -x '"\C-f":"tmux-sessionizer"'
@@ -148,3 +148,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.local/share/../bin/env"
+
+# opencode
+export PATH=/home/carlesoctav/.opencode/bin:$PATH
