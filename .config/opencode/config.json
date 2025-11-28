@@ -3,5 +3,6 @@
   "plugin": [
     "opencode-gemini-auth"
   ],
+  "tui": { "scroll_speed": 10 }
         
 }
