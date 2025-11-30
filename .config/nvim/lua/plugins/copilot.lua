@@ -53,6 +53,7 @@ return {
 		"olimorris/codecompanion.nvim",
 
 		event = "VeryLazy",
+		version = "v17.33.0", -- pin to this version to avoid breaking changes
 		dependencies = {
 			"github/copilot.vim",
 			"ravitemer/codecompanion-history.nvim",
