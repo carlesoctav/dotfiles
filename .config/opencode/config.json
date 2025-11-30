@@ -3,6 +3,8 @@
   "plugin": [
     "opencode-gemini-auth"
   ],
-  "tui": { "scroll_speed": 10 }
-        
+  "tui": { "scroll_speed": 10 },
+  "permission": {
+    "external_directory": "allow"
+  }
 }
