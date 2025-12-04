@@ -10,13 +10,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 
 		map("gd", require("telescope.builtin").lsp_definitions)
-		map("gr", require("telescope.builtin").lsp_references)
+		map("gA", require("telescope.builtin").lsp_references)
 		map("gI", require("telescope.builtin").lsp_implementations)
-		map("<leader>D", require("telescope.builtin").lsp_type_definitions)
-		map("<leader>ds", require("telescope.builtin").lsp_document_symbols)
-		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols)
-		map("<leader>rn", vim.lsp.buf.rename)
-		map("<leader>ra", vim.lsp.buf.code_action)
+		map("gy", require("telescope.builtin").lsp_type_definitions)
+		map("gs", require("telescope.builtin").lsp_document_symbols)
+		map("gS", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+		map("cd", vim.lsp.buf.rename)
+		map("g.", vim.lsp.buf.code_action)
 		map("K", vim.lsp.buf.hover)
 		map("gD", vim.lsp.buf.declaration)
 		map("<leader>f", function()
@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end)
 
 		vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help)
-
 	end,
 })
 
@@ -117,7 +116,7 @@ end, { desc = 'Go to next diagnostic and show float' })
 
 vim.api.nvim_create_autocmd('DiagnosticChanged', {
 	callback = function(args)
-		vim.diagnostic.setloclist({ open = false }) 
+		vim.diagnostic.setloclist({ open = false })
 	end,
 })
 

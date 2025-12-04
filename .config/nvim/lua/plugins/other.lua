@@ -10,7 +10,7 @@ return {
 			require("mini.splitjoin").setup(
 				{
 					mappings = {
-					    toggle = 'gs',
+					    toggle = 'ds',
 					    split = '',
 					    join = '',
 					},
