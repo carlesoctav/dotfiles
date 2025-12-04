@@ -1,10 +1,5 @@
 [
   {
-    "bindings": {
-      "ctrl-q": null
-    }
-  },
-  {
     "context": "Editor && vim_mode == visual",
     "bindings": {
       "space f": "editor::FormatSelections",
@@ -12,6 +7,7 @@
         "buffer_search::Deploy",
         { "focus": true, "replace_enabled": false }
       ],
+      "g/": "project_search::SearchInNew",
       "s": [
         "buffer_search::Deploy",
         { "focus": true, "replace_enabled": true }
@@ -56,6 +52,12 @@
     "context": "AgentPanel",
     "bindings": {
       "space g a": "agent::ToggleModelSelector"
+    }
+  },
+  {
+    "context": "ProjectSearchBar",
+    "bindings": {
+      "ctrl-q": "pane::CloseActiveItem"
     }
   },
   {
@@ -115,6 +117,12 @@
       "ctrl-w o": "workspace::CloseInactiveTabsAndPanes",
       "ctrl-w ctrl-n": "workspace::NewFileSplitHorizontal",
       "ctrl-w n": "workspace::NewFileSplitHorizontal"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-s": "vim::PushAddSurrounds"
     }
   }
 ]

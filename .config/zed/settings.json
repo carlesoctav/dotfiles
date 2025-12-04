@@ -7,9 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "context_servers": {
-    
-  },
+  "show_edit_predictions": true,
+  "context_servers": {},
   "language_models": {
     "openai_compatible": {
       "Z.ai": {
@@ -61,24 +60,16 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/mnt/carles/./"
-          ]
+          "paths": ["/mnt/carles/./"]
         },
         {
-          "paths": [
-            "/mnt/carles/lm_eval"
-          ]
+          "paths": ["/mnt/carles/lm_eval"]
         },
         {
-          "paths": [
-            "/mnt/carles/tunix2"
-          ]
+          "paths": ["/mnt/carles/tunix2"]
         },
         {
-          "paths": [
-            "/mnt/carles/tunix3/./"
-          ]
+          "paths": ["/mnt/carles/tunix3/./"]
         }
       ]
     },
@@ -134,19 +125,18 @@
   },
   "relative_line_numbers": "enabled",
   "auto_signature_help": false,
+  "format_on_save": "off",
   "languages": {
     "Python": {
-      "language_servers": ["ty", "ruff"],
+      "language_servers": ["pyrefly", "ruff"],
       "format_on_save": "off"
     }
   },
 
   "lsp": {
-    "ty": {
-      "settings": {
-        "experimental": {
-          "rename": true
-        }
+    "pyrefly": {
+      "initialization_options": {
+        "displayTypeErrors": "force-off"
       }
     }
   }
