@@ -1,5 +1,10 @@
 [
   {
+    "bindings": {
+      "ctrl-q": null
+    }
+  },
+  {
     "context": "Editor && vim_mode == visual",
     "bindings": {
       "space f": "editor::FormatSelections",
@@ -43,6 +48,13 @@
     }
   },
   {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "space y": ["workspace::SendKeystrokes", "\" + y"],
+      "space d": ["workspace::SendKeystrokes", "\" _ y"]
+    }
+  },
+  {
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-k": "editor::ShowSignatureHelp"
@@ -52,12 +64,6 @@
     "context": "AgentPanel",
     "bindings": {
       "space g a": "agent::ToggleModelSelector"
-    }
-  },
-  {
-    "context": "ProjectSearchBar",
-    "bindings": {
-      "ctrl-q": "pane::CloseActiveItem"
     }
   },
   {
@@ -123,6 +129,27 @@
     "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
     "bindings": {
       "shift-s": "vim::PushAddSurrounds"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-d": [
+        "action::Sequence",
+        ["vim::ScrollDown", "editor::ScrollCursorCenter"]
+      ],
+      "ctrl-u": [
+        "action::Sequence",
+        ["vim::ScrollUp", "editor::ScrollCursorCenter"]
+      ],
+      "pagedown": [
+        "action::Sequence",
+        ["vim::ScrollDown", "editor::ScrollCursorCenter"]
+      ],
+      "pageup": [
+        "action::Sequence",
+        ["vim::ScrollUp", "editor::ScrollCursorCenter"]
+      ]
     }
   }
 ]
