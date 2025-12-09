@@ -1,10 +1,5 @@
 [
   {
-    "bindings": {
-      "ctrl-q": null
-    }
-  },
-  {
     "context": "Editor && vim_mode == visual",
     "bindings": {
       "space f": "editor::FormatSelections",
@@ -51,7 +46,6 @@
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
       "space y": ["workspace::SendKeystrokes", "\" + y"],
-      "space d": ["workspace::SendKeystrokes", "\" _ y"]
     }
   },
   {
@@ -61,17 +55,16 @@
     }
   },
   {
-    "context": "AgentPanel",
+    "context": "AgentPanel > Editor && VimControl && vim_mode == normal",
     "bindings": {
       "space g a": "agent::ToggleModelSelector"
     }
   },
   {
-    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl|| EmptyPane || SharedScreen || MarkdownPreview || KeyContextView || AgentPanel || Terminal || ProjectSearchBar || ProjectSearchView || BufferSearchBar ||Diagnostics",
+    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl|| EmptyPane || SharedScreen || MarkdownPreview || KeyContextView || AgentPanel || Terminal || ProjectSearchBar || ProjectSearchView || BufferSearchBar || Diagnostics || Pane",
     "bindings": {
       "ctrl-w ": null,
       "ctrl-w |": "workspace::ToggleZoom",
-      "ctrl-q": "pane::CloseActiveItem",
       "ctrl-w left": "workspace::ActivatePaneLeft",
       "ctrl-w right": "workspace::ActivatePaneRight",
       "ctrl-w up": "workspace::ActivatePaneUp",
@@ -150,6 +143,11 @@
         "action::Sequence",
         ["vim::ScrollUp", "editor::ScrollCursorCenter"]
       ]
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-q": "pane::CloseActiveItem"
     }
   }
 ]
