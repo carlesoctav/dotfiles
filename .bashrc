@@ -151,3 +151,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # opencode
 export PATH=/home/carlesoctav/.opencode/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
