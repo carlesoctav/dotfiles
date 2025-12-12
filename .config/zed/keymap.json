@@ -1,4 +1,11 @@
 [
+  { "context": "GitPanel && ChangesList ",
+    "bindings": {
+      "shift-r": "git::RestoreFile",
+      "?": "git::FileHistory",
+      "g shift-i": "git::AddToGitignore"
+    }
+  },
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
@@ -154,6 +161,13 @@
   {
     "bindings": {
       "ctrl-q": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && buffer_search_deployed",
+    "bindings": {
+      "escape": "buffer_search::Dismiss",
+      "ctrl-[": "buffer_search::Dismiss"
     }
   }
 ]
