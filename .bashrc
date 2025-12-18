@@ -152,3 +152,9 @@ export NVM_DIR="$HOME/.nvm"
 # opencode
 export PATH=/home/carlesoctav/.opencode/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+
+# Start SSH agent automatically
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+fi
+eval "$(mise activate bash)"
