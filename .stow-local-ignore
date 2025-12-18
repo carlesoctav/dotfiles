@@ -1,0 +1,9 @@
+/.git
+.gitignore
+/tasks
+/tpu-tasks
+/tpu-commands
+/archbtw
+install-touchcursor-udev.sh
+remove_default.sh
+run.sh
