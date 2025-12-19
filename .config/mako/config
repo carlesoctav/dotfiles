@@ -1,7 +1,56 @@
 include=~/.config/omarchy/current/theme/mako.ini
 
+# Layout
+max-visible=5
+sort=-time
+layer=overlay
+anchor=top-right
+
+# Appearance
+font=CaskaydiaMono Nerd Font Mono 11
+background-color=#17151cd9
+text-color=#cdd6f4
+border-color=#8a818d99
+border-size=2
+border-radius=24
+padding=16,20
+margin=10,14
+width=380
+height=120
+outer-margin=10
+
+# Icons
+icons=1
+max-icon-size=48
+icon-location=left
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+markup=1
+actions=1
+
+# Progress bar styling
+progress-color=over #cba6f740
+
+# Urgency styles
+[urgency=low]
+background-color=#17151ccc
+border-color=#45394e99
+
+[urgency=normal]
+background-color=#17151cd9
+border-color=#cba6f7
+
+[urgency=critical]
+background-color=#17151cee
+border-color=#f38ba8
+default-timeout=0
+
+# Workspace OSD
 [app-name=WorkspaceOSD]
 anchor=bottom-center
 default-timeout=1500
 text-alignment=center
 font=sans-serif 20px
+

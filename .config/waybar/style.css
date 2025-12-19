@@ -1,83 +1,244 @@
+/* Material You inspired waybar theme */
+/* Based on end-4/dots-hyprland aesthetic */
+
+/* Import existing theme if available */
 @import "../omarchy/current/theme/waybar.css";
 
-* {
-  background-color: @background;
-  color: @foreground;
+/* Material color palette - override with your theme colors */
+@define-color m3-background rgba(20, 18, 24, 0.85);
+@define-color m3-surface rgba(32, 28, 36, 0.9);
+@define-color m3-surface-container rgba(42, 38, 48, 0.95);
+@define-color m3-on-surface #e6e1e6;
+@define-color m3-on-surface-variant #cac4cf;
+@define-color m3-primary #d4bbff;
+@define-color m3-on-primary #3f2d6b;
+@define-color m3-primary-container #574494;
+@define-color m3-secondary #cbc2db;
+@define-color m3-tertiary #efb8c8;
+@define-color m3-outline #958e99;
+@define-color m3-outline-variant #49454e;
 
+* {
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'CaskaydiaMono Nerd Font Mono';
-  font-size: 12px;
+  font-family: 'CaskaydiaMono Nerd Font Mono', 'Material Symbols Rounded', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
 }
 
+window#waybar {
+  background: transparent;
+}
+
+window#waybar > box {
+  background: @m3-background;
+  border-radius: 0;
+  margin: 0;
+  padding: 4px 16px 8px 16px;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to bottom, @m3-background, transparent) 1;
+}
+
+/* Module groups */
 .modules-left {
-  margin-left: 8px;
+  margin-left: 4px;
+  padding: 2px 0;
+}
+
+.modules-center {
+  padding: 2px 0;
 }
 
 .modules-right {
-  margin-right: 8px;
+  margin-right: 4px;
+  padding: 2px 0;
+}
+
+/* Workspaces - pill style like in screenshot */
+#workspaces {
+  background: @m3-surface;
+  border-radius: 24px;
+  padding: 2px 4px;
+  margin: 2px 4px;
 }
 
 #workspaces button {
   all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
+  font-family: 'CaskaydiaMono Nerd Font Mono';
+  font-size: 12px;
+  font-weight: 600;
+  color: @m3-on-surface-variant;
+  background: transparent;
+  padding: 2px 8px;
+  margin: 2px 1px;
+  border-radius: 16px;
+  min-width: 20px;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 #workspaces button.empty {
-  opacity: 0.5;
+  color: @m3-outline;
+  opacity: 0.6;
 }
 
-#cpu,
+#workspaces button.visible {
+  color: @m3-on-surface;
+}
+
+#workspaces button.active {
+  background: @m3-primary;
+  color: @m3-on-primary;
+  min-width: 28px;
+}
+
+#workspaces button:hover {
+  background: @m3-surface-container;
+  color: @m3-on-surface;
+}
+
+#workspaces button.active:hover {
+  background: @m3-primary;
+}
+
+/* Clock - centered and prominent */
+#clock {
+  font-size: 13px;
+  font-weight: 600;
+  color: @m3-on-surface;
+  background: @m3-surface;
+  border-radius: 24px;
+  padding: 4px 16px;
+  margin: 2px 0;
+}
+
+/* Right side modules - grouped style */
 #battery,
+#cpu,
+#network,
 #pulseaudio,
-#custom-omarchy,
-#custom-screenrecording-indicator,
-#custom-update {
-  min-width: 12px;
-  margin: 0 7.5px;
-}
-
-#tray {
-  margin-right: 16px;
-}
-
 #bluetooth {
-  margin-right: 17px;
+  color: @m3-on-surface;
+  background: @m3-surface;
+  border-radius: 24px;
+  padding: 4px 12px;
+  margin: 2px 3px;
+  transition: all 200ms ease;
 }
 
-#network {
-  margin-right: 13px;
+#battery:hover,
+#cpu:hover,
+#network:hover,
+#pulseaudio:hover,
+#bluetooth:hover {
+  background: @m3-surface-container;
+}
+
+/* Battery states */
+#battery.warning {
+  color: #f9de8f;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+#battery.charging,
+#battery.plugged,
+#battery.full {
+  color: #a6e3a1;
+}
+
+
+
+/* Pulseaudio muted state */
+#pulseaudio.muted {
+  color: @m3-outline;
+}
+
+/* Network disconnected */
+#network.disconnected {
+  color: @m3-outline;
+}
+
+/* Bluetooth disabled */
+#bluetooth.disabled {
+  color: @m3-outline;
+}
+
+/* Custom modules */
+#custom-omarchy {
+  font-size: 16px;
+  color: @m3-primary;
+  background: @m3-surface;
+  border-radius: 24px;
+  padding: 4px 12px;
+  margin: 2px 4px;
+  transition: all 200ms ease;
+}
+
+#custom-omarchy:hover {
+  background: @m3-surface-container;
+}
+
+#custom-update {
+  font-size: 11px;
+  color: @m3-tertiary;
+  margin: 0 8px;
+}
+
+#custom-screenrecording-indicator {
+  font-size: 11px;
+  margin: 0 8px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #f38ba8;
+}
+
+/* Tray */
+#tray {
+  background: @m3-surface;
+  border-radius: 24px;
+  padding: 4px 10px;
+  margin: 2px 4px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }
 
 #custom-expand-icon {
-  margin-right: 20px;
+  color: @m3-on-surface-variant;
+  padding: 0 6px;
+  font-size: 12px;
 }
 
+/* Group styling */
+#tray-expander {
+  background: @m3-surface;
+  border-radius: 24px;
+  margin: 2px 4px;
+  padding: 0 4px;
+}
+
+/* Tooltip styling */
 tooltip {
-  padding: 2px;
+  background: @m3-surface-container;
+  border: 1px solid @m3-outline-variant;
+  border-radius: 12px;
+  padding: 8px 12px;
 }
 
-#custom-update {
-  font-size: 10px;
-}
-
-#clock {
-  margin-left: 8.75px;
+tooltip label {
+  color: @m3-on-surface;
+  font-size: 12px;
 }
 
 .hidden {
   opacity: 0;
-}
-
-#custom-screenrecording-indicator {
-  min-width: 12px;
-  margin-left: 8.75px;
-  font-size: 10px;
-}
-
-#custom-screenrecording-indicator.active {
-  color: #a55555;
 }

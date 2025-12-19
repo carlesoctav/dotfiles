@@ -4,9 +4,9 @@ selection_wrap = true                                                       # wr
 click_to_close = true                                                       # closes walker if clicking outside of the main content area
 global_argument_delimiter = "#"                                             # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
 exact_search_prefix = "'"                                                   # disable fuzzy searching
-theme = "omarchy-default"                                                   # theme to use
+theme = "material"                                                            # theme to use
 disable_mouse = false                                                       # disable mouse (on input and list only)
-additional_theme_location = "~/.local/share/omarchy/default/walker/themes/"
+additional_theme_location = "/home/carlesoctav/.config/walker/themes/"
 
 [shell]
 anchor_top = true
@@ -28,10 +28,11 @@ quick_activate = []
 [providers]
 default = [
   "desktopapplications",
+  "windows",
   "menus",
   "websearch",
 ] # providers to be queried by default
-empty = ["desktopapplications"] # providers to be queried when query is empty
+empty = ["desktopapplications", "windows"] # providers to be queried when query is empty
 max_results = 50 # global max results
 
 [providers.sets] # define your own defaults/empty sets of providers
@@ -61,8 +62,17 @@ provider = "websearch"
 prefix = "$"
 provider = "clipboard"
 
+[[providers.prefixes]]
+prefix = "~"
+provider = "windows"
+
 [providers.actions] # This will be MERGED/OVEWRITTEN with what the user specifies
 dmenu = [{ action = "select", default = true, bind = "Return" }]
+
+windows = [
+  { action = "focus", default = true, bind = "Return" },
+  { action = "close", bind = "ctrl d" },
+]
 
 providerlist = [
   { action = "activate", default = true, bind = "Return", after = "ClearReload" },
@@ -94,7 +104,7 @@ websearch = [
   { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "Reload" },
 ]
 
-desktopapplications = [
+applications = [
   { action = "start", default = true, bind = "Return" },
   { action = "start:keep", label = "open+next", bind = "shift Return", after = "KeepOpen" },
   { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "AsyncReload" },
@@ -143,3 +153,7 @@ clipboard = [
   { action = "toggle_images", global = true, label = "toggle images", bind = "ctrl i", after = "ClearReload" },
   { action = "edit", bind = "ctrl o" },
 ]
+
+[[emergencies]]
+text = "Restart Walker"
+command = "omarchy-restart-walker"

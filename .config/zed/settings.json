@@ -47,8 +47,8 @@
   },
   "agent": {
     "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini"
+      "provider": "Z.ai",
+      "model": "glm-4.6"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
