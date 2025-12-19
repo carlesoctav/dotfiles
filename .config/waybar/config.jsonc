@@ -7,7 +7,7 @@
   "margin-top": 0,
   "margin-left": 0,
   "margin-right": 0,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
     "group/tray-expander",
@@ -15,9 +15,7 @@
     "network",
     "pulseaudio",
     "cpu",
-    "battery",
-    "custom/update",
-    "custom/screenrecording-indicator"
+    "battery"
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -35,20 +33,6 @@
       "10": []
     }
   },
-  "custom/omarchy": {
-    "format": "<span font='omarchy'>\ue900</span>",
-    "on-click": "omarchy-menu",
-    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
-  },
-  "custom/update": {
-    "format": "",
-    "exec": "omarchy-update-available",
-    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
-    "tooltip-format": "Omarchy update available",
-    "signal": 7,
-    "interval": 3600
-  },
-
   "cpu": {
     "interval": 5,
     "format": "󰍛 {usage}%",
@@ -57,8 +41,7 @@
   "clock": {
     "format": "{:%H:%M • %A, %m/%d}",
     "format-alt": "{:%d %B W%V %Y}",
-    "tooltip": false,
-    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+    "tooltip": false
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -71,7 +54,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-wifi"
+    "on-click": "nm-connection-editor"
   },
   "battery": {
     "format": "{icon} {capacity}%",
@@ -86,7 +69,7 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
-    "on-click": "omarchy-menu power",
+    "on-click": "wlogout",
     "states": {
       "warning": 20,
       "critical": 10
@@ -121,12 +104,6 @@
   "custom/expand-icon": {
     "format": "",
     "tooltip": false
-  },
-  "custom/screenrecording-indicator": {
-    "on-click": "omarchy-cmd-screenrecord",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
-    "signal": 8,
-    "return-type": "json"
   },
   "tray": {
     "icon-size": 14,

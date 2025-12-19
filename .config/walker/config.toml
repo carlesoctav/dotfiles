@@ -156,4 +156,4 @@ clipboard = [
 
 [[emergencies]]
 text = "Restart Walker"
-command = "omarchy-restart-walker"
+command = "pkill walker; sleep 0.5; walker --gapplication-service &"
