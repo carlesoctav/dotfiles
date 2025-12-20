@@ -9,4 +9,4 @@ workspace="$1"
 
 hyprctl dispatch movetoworkspace "$workspace"
 hyprctl dispatch workspace "$workspace"
-notify-send --app-name WorkspaceOSD --expire-time=1500 --hint string:x-dunst-stack-tag:workspace "Workspace ${workspace}"
+# Notification handled by quickshell bar

@@ -79,11 +79,5 @@ IFS=$'\t' read -r _display address workspace_label <<< "$selection"
 
 if [[ -n "$address" ]]; then
   hyprctl dispatch focuswindow "address:$address"
-  if [[ -n "$workspace_label" ]]; then
-    label="$workspace_label"
-    if [[ "$workspace_label" == "-1" || "$workspace_label" == "special" ]]; then
-      label="special"
-    fi
-    notify-send --app-name WorkspaceOSD --expire-time=1500 --hint string:x-dunst-stack-tag:workspace "Workspace ${label}"
-  fi
+  # Notification handled by quickshell bar
 fi

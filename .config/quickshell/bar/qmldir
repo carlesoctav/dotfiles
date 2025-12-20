@@ -1,3 +1,1 @@
-module bar
-Bar 1.0 Bar.qml
-RoundCorner 1.0 RoundCorner.qml
+../../../dotfiles/.config/quickshell/bar/qmldir

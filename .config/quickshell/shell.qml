@@ -1,6 +1,1 @@
-import Quickshell
-import "bar"
-
-ShellRoot {
-    Bar {}
-}
+ii/shell.qml

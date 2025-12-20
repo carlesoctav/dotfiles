@@ -136,7 +136,7 @@ alias dlogs='docker ps --format "{{.Names}}" | fzf | xargs -r docker logs -f --t
 alias dexec='container=$(docker ps --format "{{.Names}}" | fzf) && [ -n "$container" ] && docker exec -it "$container" bash'
 alias rtc='systemctl --user restart touchcursor.service'
 
-. "$HOME/.cargo/env"
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -151,7 +151,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # opencode
 export PATH=/home/carlesoctav/.opencode/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
+
 
 # Start SSH agent automatically
 if [ -z "$SSH_AUTH_SOCK" ]; then

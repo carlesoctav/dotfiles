@@ -5,7 +5,6 @@
   "plugin": [
     "opencode-google-antigravity-auth",
     "opencode-pty",
-    "opencode-gemini-auth"
   ],
   "theme": "catppuccin",
   "tui": { "scroll_speed": 10 },
