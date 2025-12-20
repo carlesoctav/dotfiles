@@ -4,9 +4,9 @@ general.import = [ "~/.config/alacritty/colors.toml" ]
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "CaskaydiaMono Nerd Font Mono" }
-bold = { family = "CaskaydiaMono Nerd Font Mono" }
-italic = { family = "CaskaydiaMono Nerd Font Mono" }
+normal = { family = "ZedMono Nerd Font Mono", style = "Medium" }
+bold = { family = "ZedMono Nerd Font Mono", style = "Bold" }
+italic = { family = "ZedMono Nerd Font Mono", style = "Medium Italic" }
 size = 9
 
 [window]
