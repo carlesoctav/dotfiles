@@ -3,12 +3,6 @@ general.import = [ "~/.config/alacritty/colors.toml" ]
 [env]
 TERM = "xterm-256color"
 
-[font]
-normal = { family = "ZedMono Nerd Font Mono", style = "Medium" }
-bold = { family = "ZedMono Nerd Font Mono", style = "Bold" }
-italic = { family = "ZedMono Nerd Font Mono", style = "Medium Italic" }
-size = 9
-
 [window]
 padding.x = 14
 padding.y = 14

@@ -1,6 +1,12 @@
 [colors.primary]
 background = '{{colors.background.default.hex}}'
 foreground = '{{colors.on_surface.default.hex}}'
+
+[font]
+normal = { family = "{{appearance.fonts.monospace}}", style = "Medium" }
+bold = { family = "{{appearance.fonts.monospace}}", style = "Bold" }
+italic = { family = "{{appearance.fonts.monospace}}", style = "Medium Italic" }
+size = 9
  
 [colors.cursor]
 text = '{{colors.on_surface.default.hex}}'

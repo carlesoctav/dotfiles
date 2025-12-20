@@ -1,5 +1,6 @@
 [config]
 reload_apps = true
+import_json_files = ["~/.config/desktop.json"]
 
 [templates.alacritty]
 input_path = "~/.config/matugen/templates/alacritty.toml"
