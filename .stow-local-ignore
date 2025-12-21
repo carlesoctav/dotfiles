@@ -7,3 +7,4 @@
 install-touchcursor-udev.sh
 remove_default.sh
 run.sh
+/etc

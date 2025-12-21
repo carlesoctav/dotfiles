@@ -9,4 +9,6 @@ workspace="$1"
 
 hyprctl dispatch movetoworkspace "$workspace"
 hyprctl dispatch workspace "$workspace"
-# Notification handled by quickshell bar
+
+# Show notification (centered, non-stacking)
+notify-send -t 1500 -a "WorkspaceOSD" -h string:x-canonical-private-synchronous:workspace "Workspace $workspace"

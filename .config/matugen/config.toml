@@ -30,7 +30,3 @@ post_hook = "hyprctl reload"
 [templates.walker]
 input_path = "~/.config/matugen/templates/walker-style.css"
 output_path = "~/.config/walker/themes/material/style.css"
-
-[templates.quickshell_json]
-input_path = "~/.config/matugen/templates/colors.json"
-output_path = "~/.local/state/quickshell/user/generated/colors.json"
