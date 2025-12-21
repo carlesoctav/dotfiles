@@ -2,7 +2,7 @@
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
-SHELL_CONFIG_FILE="$XDG_CONFIG_HOME/illogical-impulse/config.json"
+SHELL_CONFIG_FILE="$XDG_CONFIG_HOME/desktop.json"
 
 set_wallpaper_path() {
     local path="$1"

@@ -26,7 +26,7 @@ Singleton {
 
     function logout() {
         closeAllWindows();
-        Quickshell.execDetached(["pkill", "-i", "Hyprland"]);
+        Quickshell.execDetached(["bash", "-c", "uwsm stop || hyprctl dispatch exit || pkill -i Hyprland"]);
     }
 
     function launchTaskManager() {
