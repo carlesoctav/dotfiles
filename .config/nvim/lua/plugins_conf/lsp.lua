@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 
 		map("gd", require("telescope.builtin").lsp_definitions)
-		map("gA", require("telescope.builtin").lsp_references)
+		map("gr", require("telescope.builtin").lsp_references)
 		map("gI", require("telescope.builtin").lsp_implementations)
 		map("gy", require("telescope.builtin").lsp_type_definitions)
 		map("gs", require("telescope.builtin").lsp_document_symbols)
@@ -37,18 +37,12 @@ vim.api.nvim_create_autocmd('LspDetach', {
 })
 
 local servers = {
-	pyright = {
-		settings = {
-			pyright = {
-				disableOrganizeImports = true,
-			},
-			python = {
-				analysis = {
-					ignore = { '*' },
-				},
-			},
+	pyrefly = {
+		init_options = {
+			displayTypeErrors = "on",
 		},
 	},
+	ruff = {},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -117,9 +111,20 @@ end, { desc = 'Go to next diagnostic and show float' })
 vim.api.nvim_create_autocmd('DiagnosticChanged', {
 	callback = function(args)
 		vim.diagnostic.setloclist({ open = false })
+		vim.diagnostic.setqflist({ open = false })
 	end,
 })
 
+
+vim.keymap.set('n', '<leader>dq', function()
+	local qflist = vim.fn.getqflist({ winid = 0 })
+	local is_open = qflist.winid ~= 0 and vim.api.nvim_win_is_valid(qflist.winid)
+	if is_open then
+		vim.cmd('cclose')
+	else
+		vim.diagnostic.setqflist({ open = true })
+	end
+end, { desc = 'Toggle global diagnostics in quickfix list' })
 
 vim.keymap.set('n', '<leader>dl', function()
 	local loclist = vim.fn.getloclist(0, { title = 0, winid = 0 })

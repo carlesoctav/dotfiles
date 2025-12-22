@@ -5,10 +5,10 @@ layer=overlay
 anchor=top-right
 
 # Appearance
-font=Zed Sans 11
-background-color=#1b2122e6
-text-color=#dee3e5
-border-color=#89929599
+font={{fonts.main}} 11
+background-color={{colors.surface_container.default.hex}}e6
+text-color={{colors.on_surface.default.hex}}
+border-color={{colors.outline.default.hex}}99
 border-size=2
 border-radius=24
 padding=16,20
@@ -29,20 +29,20 @@ markup=1
 actions=1
 
 # Progress bar styling
-progress-color=over #83d2e440
+progress-color=over {{colors.primary.default.hex}}40
 
 # Urgency styles
 [urgency=low]
-background-color=#171d1ecc
-border-color=#3f484b99
+background-color={{colors.surface_container_low.default.hex}}cc
+border-color={{colors.outline_variant.default.hex}}99
 
 [urgency=normal]
-background-color=#1b2122d9
-border-color=#83d2e4
+background-color={{colors.surface_container.default.hex}}d9
+border-color={{colors.primary.default.hex}}
 
 [urgency=critical]
-background-color=#252b2cee
-border-color=#ffb4ab
+background-color={{colors.surface_container_high.default.hex}}ee
+border-color={{colors.error.default.hex}}
 default-timeout=0
 
 # Workspace OSD
@@ -50,7 +50,7 @@ default-timeout=0
 anchor=bottom-center
 default-timeout=1500
 text-alignment=center
-font=Zed Sans 20px
+font={{fonts.main}} 20px
 
 # Per-mode settings
 [mode=do-not-disturb]
